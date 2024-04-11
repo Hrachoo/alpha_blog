@@ -1,0 +1,26 @@
+<div class="row  d-flex justify-content-center ">
+<div class="col-8 mt-4 ">
+    <h3 class="card-title text-center mb-4"><%= @article.title %></h3>
+    <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header">
+        By Hrachos
+        </div>
+        <div class="card-body">
+            <p class="card-text"><%= simple_format(@article.description) %></p>
+        </div>
+        <div class="container mb-4 d-flex justify-content-center">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info  mx-1"%>                
+            </li>
+            <li class="nav-item">
+            <%= button_to "Delete", article_path(@article), class: "btn btn-outline-danger  mx-1", method: :delete, onclick: "return confirm('Are you sure?')" %> 
+            </li>
+            </ul>
+        </div>
+        <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(@article.created_at)%> ago</small>
+        </div>
+    </div>
+</div>
+</div>
