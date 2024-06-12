@@ -3,7 +3,7 @@
     <h3 class="card-title text-center mb-4"><%= @article.title %></h3>
     <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header">
-        By Hrachos
+            By <%= @article.user.username %>
         </div>
         <div class="card-body">
             <p class="card-text"><%= simple_format(@article.description) %></p>
