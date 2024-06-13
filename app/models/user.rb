@@ -10,6 +10,11 @@ class User < ApplicationRecord
         length: { maximum: 205 },
         format: { with: VALID_EMAIL_REGEX }
         
+
+    def get_user_articles
+        return self.articles
+    end
+
     private
     
     def email_to_downcase

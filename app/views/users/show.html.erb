@@ -1,0 +1,39 @@
+<h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
+<%= gravatar_for @user %>
+
+<%= stylesheet_link_tag 'index', media: 'all' %>
+<h1 class="text-center mt-4"> Your articles</h1>
+<div class="container">
+    <% @user_articles.each do |a| %>
+        <div class="row  d-flex justify-content-center ">
+            <div class="col-8 mt-4 ">
+                <div class="card text-center shadow mb-5 bg-white rounded">
+                    <div class="card-header">
+                        <h5 class="card-title"><%= link_to a.title, article_path(a), class: "text-dark" %></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><%= truncate(a.description, length: 50) %></p>
+                    </div>
+                    <div class="container mb-4 d-flex justify-content-center">
+                        <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <%= link_to "View", article_path(a), class: "btn btn-outline-primary mx-1"%>               
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Edit", edit_article_path(a), class: "btn btn-outline-info  mx-1"%>                
+                        </li>
+                        <li class="nav-item">
+                        <%= button_to "Delete", article_path(a), class: "btn btn-outline-danger  mx-1", method: :delete, onclick: "return confirm('Are you sure?')" %> 
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <small>Created <%= time_ago_in_words(a.created_at)%> ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    <% end %>
+</div>
+

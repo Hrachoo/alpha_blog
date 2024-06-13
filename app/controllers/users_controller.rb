@@ -25,7 +25,10 @@ class UsersController < ApplicationController
         else
             render "edit"
         end
+    end
 
+    def show
+        @user_articles = @user.get_user_articles
     end
 
     private
