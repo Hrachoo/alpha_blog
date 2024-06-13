@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, except: [:new, :create]
+    before_action :set_user, except: [:new, :create, :index]
 
     def new
         @user = User.new
@@ -25,6 +25,10 @@ class UsersController < ApplicationController
         else
             render "edit"
         end
+    end
+
+    def index
+        @users = User.all
     end
 
     def show

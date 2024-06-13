@@ -49,6 +49,9 @@ gem "bootsnap", require: false
 # Using bootstrap to style our app. The most popular HTML, CSS, and JavaScript framework for developing web projects. jquery and popper.js dependencies are also added.
 gem 'bootstrap', '~> 5.2.2'
 
+# Use will_paginate for pages that there will not shown too many articles
+gem 'will_paginate', '~> 4.0'
+
 # Use Sass to process CSS
  gem "sassc-rails"
 

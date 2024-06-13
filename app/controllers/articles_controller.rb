@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
     before_action :find_article, except: [:new, :index]
     def index
-        @articles = Article.all
+        @articles = Article.paginate(page: params[:page], per_page: 3)
     end
 
     def show
@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
     def new
         @article = Article.new
     end
+    
     def create
 
         @article = Article.new(article_params)

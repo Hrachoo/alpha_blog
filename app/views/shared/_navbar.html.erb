@@ -1,5 +1,7 @@
 <%= stylesheet_link_tag 'home', media: 'all' %>
-<nav class="navbar-black navbar navbar-expand-lg bg-body-tertiary">
+<%= javascript_include_tag 'navbar' %>
+
+<nav class="navbar-black navbar navbar-expand-lg bg-body-tertiary" style="height: 50px">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><%= image_tag 'app-logo-light-blue.png', alt: 'Logo App', class: 'app-logo' %></a>
     <button class="white-font navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,29 +10,47 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/articles/new">NEW</a>
+          <a class="nav-link" href="/users">Bloggers</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/articles">All Articles</a>
         </li>
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          About us
+        <a class="nav-link dropdown-toggle" id="navDrowpdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Articles
         </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Trainee</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
+        <ul class="dropdown-menu" id="dropdownMenu" style="display: none" >
+          <li><a class="dropdown-item" href="/articles/new">NEW</a></li>
+          <li><a class="dropdown-item" href="/articles">All articles</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><a class="dropdown-item" href="#">Contact</a></li>
         </ul>
       </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Learn...">
-        <a href="/signup">
-          <button class="login-btn btn" type="submit">Sign up</button>
-        </a>
-      </form>
+      <a href="/signup">
+        <button class="login-btn btn" style="height: 36px">Sign up</button>
+      </a>
     </div>
   </div>
 </nav>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let isDropdownOpen = false;
+    document.addEventListener("click", function(event) {
+      const dropdown = document.getElementById("navDrowpdown");
+      if (event.target === dropdown) {
+          toggleDropdown();
+      } else {
+      }
+    });
+    function toggleDropdown() {
+      isDropdownOpen = !isDropdownOpen;
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      if (isDropdownOpen) {
+          dropdownMenu.style.display = "block";
+      } else {
+          dropdownMenu.style.display = "none";
+      }
+    }
+  });
+</script>
