@@ -34,6 +34,11 @@
                 </div>
             </div>
         </div>
-   
     <% end %>
 </div>
+<% unless @articles.length < 4%>
+    <div class="flickr_pagination " style="margin-bottom: 100px">
+        <%= will_paginate @articles, :container => false %>
+    </div>
+<% end %>
+
