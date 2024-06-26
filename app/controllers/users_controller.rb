@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user_articles = @user.get_user_articles
+        @user_articles = @user.get_user_articles.paginate(page: params[:page], per_page: 5)
     end
 
     private

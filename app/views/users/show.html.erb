@@ -3,6 +3,9 @@
 
 <%= stylesheet_link_tag 'index', media: 'all' %>
 <h1 class="text-center mt-4"> Your articles</h1>
+<div class="flickr_pagination">
+    <%= will_paginate @user_articles, :container => false %>
+</div>
 <div class="container">
     <% @user_articles.each do |a| %>
         <div class="row  d-flex justify-content-center ">
@@ -36,4 +39,8 @@
    
     <% end %>
 </div>
-
+<% unless @user_articles.length < 4%>
+    <div class="flickr_pagination " style="margin-bottom: 100px">
+        <%= will_paginate @user_articles, :container => false %>
+    </div>
+<% end %>
